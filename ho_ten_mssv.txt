@@ -1,0 +1,30 @@
+================================================================================
+BÀI BÁO CÁO NỘP BÀI THỰC HÀNH LAB 2
+HỌC PHẦN: VẬN HÀNH VÀ BẢO TRÌ PHẦN MỀM (DEVOPS — 2026)
+================================================================================
+
+1. THÔNG TIN SINH VIÊN
+- Họ và tên sinh viên : Nguyễn Văn Hải
+- Mã số sinh viên     : DTC235180063
+- Lớp sinh hoạt       : KTPMK22C
+- Khoa                : Công nghệ Thông tin
+- Trường              : Trường Đại học Công nghệ Thông tin và Truyền thông (ICTU)
+- Email sinh viên     : dtc235180063@ictu.edu.vn
+
+2. THÔNG TIN BÀI THỰC HÀNH
+- Tên bài thực hành   : Lab 2 — Thiết lập Môi trường DevOps & Áp dụng Nguyên tắc CALMS
+- Chuẩn đầu ra (CDR)  : CDR 2.1 (Khái niệm DevOps) + 2.2 (Nguyên tắc cốt lõi) + 2.3 (Công cụ DevOps)
+- Các công cụ cài đặt : VS Code 1.141.1, Git 2.51.0, Docker Desktop 29.8.2
+- Automation Script   : setup-dev-env.sh / setup-dev-env.ps1 (chạy < 1s)
+- Docker Container    : devops-lab2-app (Node.js 18-alpine, port 3000)
+- Điểm CALMS tự đánh giá: 19 / 25 điểm
+- Ngày hoàn thành     : 16/10/2026
+
+3. DANH MỤC CÁC MINH CHỨNG (SCREENSHOTS)
+- 01-toolchain-check.png   : Kiểm tra phiên bản DevOps Toolchain (VS Code, Git, Docker)
+- 02-automation-script.png : Script tự động hóa khởi tạo môi trường dev chạy thành công
+- 03-docker-build.png      : Quá trình build Docker image (devops-lab2-app) từ Dockerfile
+- 04-docker-run-curl.png   : Chạy container và curl http://localhost:3000 nhận JSON kết quả
+- 05-toolchain-map.png     : Bản đồ chuỗi công cụ DevOps (Toolchain Map) theo 6 giai đoạn
+- 06-calms-assessment.png  : Bảng tự đánh giá mức độ trưởng thành CALMS và kế hoạch 3 hành động
+================================================================================

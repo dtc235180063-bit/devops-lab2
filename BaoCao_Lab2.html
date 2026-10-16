@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Báo Cáo Lab 2 - Nguyễn Văn Hải - DTC235180063</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background-color: #f8fafc;
+        }
+        .header {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+        }
+        .header h1 { margin: 0 0 10px 0; font-size: 24px; }
+        .header h2 { margin: 0; font-size: 16px; font-weight: normal; opacity: 0.9; }
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        h2.section-title {
+            color: #1e293b;
+            border-bottom: 2px solid #4f46e5;
+            padding-bottom: 8px;
+            margin-top: 0;
+            font-size: 19px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 13.5px;
+        }
+        th {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-weight: 600;
+        }
+        tr:nth-child(even) { background-color: #f8fafc; }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .badge-success { background-color: #dcfce7; color: #166534; }
+        .code-box {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            line-height: 1.4;
+        }
+        .qa-box {
+            background: #f8fafc;
+            border-left: 4px solid #4f46e5;
+            padding: 14px 18px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        .qa-title { font-weight: bold; color: #1e293b; margin-bottom: 6px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>BÁO CÁO THỰC HÀNH LAB 2: THIẾT LẬP MÔI TRƯỜNG DEVOPS & NGUYÊN TẮC CALMS</h1>
+        <h2>Học phần: Vận hành và Bảo trì Phần mềm (DevOps — 2026) | Khoa CNTT — Trường ĐH CNTT & TT (ICTU)</h2>
+    </div>
+
+    <div class="card">
+        <h2 class="section-title">I. Thông Tin Sinh Viên & Công Cụ Nền Tảng</h2>
+        <table>
+            <tr><th width="30%">Họ và tên sinh viên</th><td><strong>Nguyễn Văn Hải</strong></td></tr>
+            <tr><th>Mã số sinh viên (MSSV)</th><td><strong>DTC235180063</strong></td></tr>
+            <tr><th>Lớp sinh hoạt</th><td><strong>KTPMK22C</strong></td></tr>
+            <tr><th>VS Code IDE</th><td>Phiên bản 1.141.1 (GitLens, Docker, YAML, Prettier)</td></tr>
+            <tr><th>Git Version Control</th><td>Phiên bản 2.51.0.windows.1</td></tr>
+            <tr><th>Docker Desktop</th><td>Phiên bản 29.8.2 (WSL 2 Engine, Linux 6.18 Kernel)</td></tr>
+            <tr><th>Automation Script</th><td><code>setup-dev-env.sh</code> / <code>setup-dev-env.ps1</code> (<span class="badge badge-success">0.3s</span>)</td></tr>
+            <tr><th>Containerized App</th><td><code>devops-lab2-app</code> (Node.js 18-alpine, Port 3000)</td></tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2 class="section-title">II. Nguyên Tắc Automation & Kịch Bản Khởi Tạo Môi Trường</h2>
+        <div class="qa-box">
+            <div class="qa-title">Bài toán & Giải pháp tự động hóa:</div>
+            <p><strong>Vấn đề:</strong> Mỗi thành viên mới gia nhập team mất đến 2 giờ cấu hình thủ công môi trường dev và phụ thuộc.</p>
+            <p><strong>Giải pháp:</strong> Viết kịch bản tự động <code>setup-dev-env.sh</code> và <code>setup-dev-env.ps1</code>. Kịch bản kiểm tra phần mềm nền tảng, tạo cấu trúc thư mục (<code>src/</code>, <code>tests/</code>, <code>docs/</code>), khởi tạo Git repository và tự sinh <code>.gitignore</code>, <code>README.md</code> chuẩn. Thời gian giảm từ 2 giờ xuống <strong>0.3 giây</strong>.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="section-title">III. Nguyên Tắc Lean & Docker Containerization</h2>
+        <div class="qa-box">
+            <div class="qa-title">Loại bỏ lãng phí "It works on my machine":</div>
+            <p>Đóng gói ứng dụng và runtime Node.js 18 vào Docker Image. Chạy container cách ly hoàn toàn trên cổng 3000:</p>
+        </div>
+        <div class="code-box">
+$ curl http://localhost:3000
+{
+  "message": "Hello from Docker!",
+  "lab": "DevOps Lab 2 — Lean Principle",
+  "student": "Nguyễn Văn Hải",
+  "mssv": "DTC235180063",
+  "class": "KTPMK22C",
+  "timestamp": "2026-10-16T02:35:00.310Z",
+  "node_version": "v18.20.8",
+  "platform": "linux"
+}
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="section-title">IV. Bảng Phân Loại 13 Công Cụ Trong DevOps Toolchain</h2>
+        <table>
+            <thead>
+                <tr><th>Giai đoạn</th><th>Công cụ</th><th>Đã dùng ở Lab</th><th>Mục đích chính</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Plan</strong></td><td>GitHub Projects</td><td>Toàn khóa</td><td>Quản lý công việc, backlog, roadmap</td></tr>
+                <tr><td><strong>Code</strong></td><td>Git + GitHub</td><td>Lab 1, 5</td><td>Hệ thống quản lý phiên bản phân tán</td></tr>
+                <tr><td><strong>Code</strong></td><td>VS Code</td><td>Lab 2</td><td>Môi trường lập trình tích hợp (IDE)</td></tr>
+                <tr><td><strong>Build</strong></td><td>Maven</td><td>Lab 7</td><td>Biên dịch và đóng gói ứng dụng Java</td></tr>
+                <tr><td><strong>Test</strong></td><td>Postman / Newman</td><td>Lab 6</td><td>Kiểm thử tự động hóa API</td></tr>
+                <tr><td><strong>Test</strong></td><td>SonarQube</td><td>Lab 6, 7</td><td>Phân tích chất lượng mã nguồn tĩnh</td></tr>
+                <tr><td><strong>Test</strong></td><td>OWASP ZAP</td><td>Lab 6</td><td>Quét lỗ hổng bảo mật ứng dụng web</td></tr>
+                <tr><td><strong>Deploy</strong></td><td>Docker Desktop</td><td>Lab 2, 7, 8</td><td>Đóng gói container hóa ứng dụng</td></tr>
+                <tr><td><strong>Deploy</strong></td><td>Terraform</td><td>Lab 3</td><td>Quản lý hạ tầng dưới dạng mã (IaC)</td></tr>
+                <tr><td><strong>Deploy</strong></td><td>AWS Cloud</td><td>Lab 3</td><td>Hạ tầng điện toán đám mây linh hoạt</td></tr>
+                <tr><td><strong>CI/CD</strong></td><td>GitHub Actions</td><td>Lab 1</td><td>Tự động hóa CI/CD pipeline</td></tr>
+                <tr><td><strong>CI/CD</strong></td><td>Jenkins</td><td>Lab 7</td><td>Điều phối CI/CD pipeline doanh nghiệp</td></tr>
+                <tr><td><strong>Artifact</strong></td><td>Nexus</td><td>Lab 7</td><td>Quản lý và lưu trữ artifacts / packages</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2 class="section-title">V. Đánh Giá Mức Độ Trưởng Thành CALMS (19 / 25 Điểm)</h2>
+        <table>
+            <thead>
+                <tr><th>Trụ cột CALMS</th><th>1 (Yếu)</th><th>3 (Trung bình)</th><th>5 (Xuất sắc)</th><th>Điểm tự chấm</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Culture</strong></td><td>Dev vs Ops đổ lỗi cho nhau</td><td>Dev và Ops ngồi chung team</td><td>Cùng chịu trách nhiệm production</td><td><strong>4 / 5</strong></td></tr>
+                <tr><td><strong>Automation</strong></td><td>Deploy thủ công 100%</td><td>Có CI/CD cho 1 số project</td><td>Toàn bộ pipeline tự động hóa</td><td><strong>4 / 5</strong></td></tr>
+                <tr><td><strong>Lean</strong></td><td>Setup môi trường mất > 1 ngày</td><td>Có script, Docker một phần</td><td>1 lệnh -> môi trường sẵn sàng (30s)</td><td><strong>4 / 5</strong></td></tr>
+                <tr><td><strong>Measurement</strong></td><td>Không biết app sống hay chết</td><td>Có monitoring cơ bản qua log</td><td>Dashboard real-time + alert</td><td><strong>3 / 5</strong></td></tr>
+                <tr><td><strong>Sharing</strong></td><td>Mỗi người tự biết, không docs</td><td>Có wiki nội bộ, họp giao ban</td><td>Code review + post-mortem văn hóa mở</td><td><strong>4 / 5</strong></td></tr>
+                <tr style="background:#eef2ff; font-weight:bold;">
+                    <td colspan="4">TỔNG ĐIỂM DEVOPS MATURITY CỦA BẠN</td>
+                    <td style="color:#16a34a; font-size:15px;">19 / 25</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="margin-top:15px;">
+            <strong>Kế hoạch 3 hành động cụ thể để cải thiện DevOps Maturity:</strong>
+            <ol style="margin-top:8px; padding-left:20px;">
+                <li>Chuẩn hóa 100% môi trường phát triển cho tất cả các dịch vụ bằng Docker & DevContainers để loại bỏ triệt để "works on my machine".</li>
+                <li>Mở rộng kiểm thử tự động (Unit Test, API Test với Newman, SAST với SonarQube) tích hợp chặt chẽ vào CI pipeline.</li>
+                <li>Thiết lập hệ thống đo lường và giám sát tự động (Prometheus/Grafana) theo dõi độ khả dụng, latency và cảnh báo lỗi thời gian thực.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="card" style="text-align: center; color: #64748b; font-size: 13px;">
+        Báo cáo thực hành Lab 2 — Sinh viên: Nguyễn Văn Hải (DTC235180063) — Lớp KTPMK22C — ICTU 2026
+    </div>
+
+</body>
+</html>
